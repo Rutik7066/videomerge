@@ -33,6 +33,14 @@ import (
 )
 
 func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = ":3000"
+	} else {
+		port = ":" + port
+	}
+	
+	
 	app := fiber.New(fiber.Config{
 		BodyLimit:    100 * 1024 * 1024,
 		IdleTimeout:  time.Minute * 20,
@@ -42,7 +50,10 @@ func main() {
 
 	app.Post("/merge-video", handleMergeVideo)
 
-	log.Fatal(app.Listen("0.0.0.0:3000"))
+
+
+
+	log.Fatal(app.Listen("0.0.0.0" + port))
 }
 func generateUniqueFilename(fileType string) string {
 	uuidString := uuid.New().String()
