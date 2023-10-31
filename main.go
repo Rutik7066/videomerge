@@ -26,6 +26,7 @@ import (
 	"os"
 	"os/exec"
 	"strconv"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
@@ -33,12 +34,15 @@ import (
 
 func main() {
 	app := fiber.New(fiber.Config{
-		BodyLimit: 100 * 1024 * 1024,
+		BodyLimit:    100 * 1024 * 1024,
+		IdleTimeout:  time.Minute * 20,
+		ReadTimeout:  time.Minute * 20,
+		WriteTimeout: time.Minute * 20,
 	})
 
 	app.Post("/merge-video", handleMergeVideo)
 
-	log.Fatal(app.Listen(":3000"))
+	log.Fatal(app.Listen("0.0.0.0:3000"))
 }
 func generateUniqueFilename(fileType string) string {
 	uuidString := uuid.New().String()
