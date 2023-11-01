@@ -10,13 +10,14 @@ COPY . /app
 # Set the environment variable PORT to 3000
 ENV PORT=3000
 
-RUN ls
-RUN pwd
 RUN mkdir ./files
+
 RUN mkdir ./files/output
 
 # Build the Go application inside the container
 RUN go build -o myapp
 
-# Run the application when the container starts
-CMD ["./myapp"]
+RUN ls
+
+# Set the entry point for the container
+ENTRYPOINT ["/app/myapp"]
