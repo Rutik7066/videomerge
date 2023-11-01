@@ -12,6 +12,7 @@ ENV PORT=3000
 
 RUN ls
 RUN pwd
+RUN mkdir ./files
 RUN mkdir ./files/output
 
 # Build the Go application inside the container
