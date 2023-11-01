@@ -32,6 +32,15 @@ import (
 	"github.com/google/uuid"
 )
 
+func init() {
+	err := os.MkdirAll("/file/output", os.ModePerm)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+}
+
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -39,8 +48,7 @@ func main() {
 	} else {
 		port = ":" + port
 	}
-	
-	
+
 	app := fiber.New(fiber.Config{
 		BodyLimit:    100 * 1024 * 1024,
 		IdleTimeout:  time.Minute * 20,
@@ -49,9 +57,6 @@ func main() {
 	})
 
 	app.Post("/merge-video", handleMergeVideo)
-
-
-
 
 	log.Fatal(app.Listen("0.0.0.0" + port))
 }
