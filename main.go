@@ -32,15 +32,6 @@ import (
 	"github.com/google/uuid"
 )
 
-func init() {
-	err := os.MkdirAll("/file/output", os.ModePerm)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-}
-
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {

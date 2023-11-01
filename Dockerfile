@@ -1,26 +1,19 @@
-# Use the official Golang image as a base image
-FROM golang:1.21.3 as build
+# Use the official Golang image as the base image
+FROM golang:latest
 
-# Set the working directory inside the container
+# Set the working directory to /app
 WORKDIR /app
 
-# Copy your Go files and download dependencies
+# Copy all the files from the current directory to the container's /app directory
 COPY . /app
 
-# Build your Go application
-RUN go build -o app main.go
-
-# Use a minimal Alpine Linux image as the final base image
-FROM alpine:latest
-
-# Set an environment variable for the port (you can change the value as needed)
+# Set the environment variable PORT to 3000
 ENV PORT=3000
 
-# Copy the compiled Go application from the previous stage
-COPY --from=build /app /app
+RUN mkdir app/files/output
 
-# Expose the port that your Go application will listen on
-EXPOSE $PORT
+# Build the Go application inside the container
+RUN go build -o myapp
 
-# Start your Go application
-CMD ["/app"]
+# Run the application when the container starts
+CMD ["./myapp"]
