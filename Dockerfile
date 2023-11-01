@@ -10,6 +10,8 @@ COPY . /app
 # Set the environment variable PORT to 3000
 ENV PORT=3000
 
+RUN ls
+RUN pwd
 RUN mkdir app/files/output
 
 # Build the Go application inside the container
