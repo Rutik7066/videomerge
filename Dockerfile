@@ -14,6 +14,10 @@ RUN mkdir ./files
 
 RUN mkdir ./files/output
 
+# Make sure the ffmpeg binary is executable
+RUN chmod +x ./ffmpeg
+
+
 # Build the Go application inside the container
 RUN go build -o myapp
 
