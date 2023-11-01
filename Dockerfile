@@ -14,10 +14,13 @@ RUN mkdir ./files
 
 RUN mkdir ./files/output
 
+# Make sure the ffmpeg binary is executable
+RUN chmod +x ./ffmpeg
+
 # Build the Go application inside the container
 RUN go build -o myapp
 
 RUN ls
 
 # Set the entry point for the container
-ENTRYPOINT ["myapp"]
+CMD ["./myapp"]
