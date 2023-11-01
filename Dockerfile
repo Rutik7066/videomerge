@@ -20,4 +20,4 @@ RUN go build -o myapp
 RUN ls
 
 # Set the entry point for the container
-ENTRYPOINT ["myapp"]
+CMD ["./myapp"]
