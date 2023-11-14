@@ -1,21 +1,7 @@
 package main
 
-/*
-log in
-cd .. && ssh -i "itra-ec2-key-pair.pem" ec2-user@ec2-15-206-90-198.ap-south-1.compute.amazonaws.com
 
-rsync -avz -e "ssh -i C:\Users\Rutik\Desktop\code\irta\itra-ec2-key-pair.pem" C:\Users\Rutik\Desktop\code\irta\itra_robo_aws_lambda ec2-user@3.110.204.86:
-scp -i "C:\Users\Rutik\Desktop\code\irta\itra-ec2-key-pair.pem" -r C:\Users\Rutik\Desktop\code\irta\itra_robo_aws_lambda ec2-user@15.206.90.198:
 
-sudo systemctl daemon-reload
-sudo systemctl enable itra-robo-video-merger-app
-sudo systemctl start itra-robo-video-merger-app
-sudo systemctl status itra-robo-video-merger-app
-sudo systemctl stop itra-robo-video-merger-app
-sudo systemctl restart itra-robo-video-merger-app
-sudo systemctl disable itra-robo-video-merger-app
-
-*/
 
 import (
 	"fmt"
